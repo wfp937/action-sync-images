@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  # workflow_dispatch:
 
 # 工作流程任务（通常含有一个或多个步骤）
 jobs:
