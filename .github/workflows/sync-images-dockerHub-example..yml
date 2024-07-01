@@ -31,8 +31,8 @@ jobs:
         
     - name: Use Skopeo Tools Sync Image to MyRegistry
       env:
-        SRC_IMAGE: "apache/airflow:2.6.2-python3.8"
-        DST_IMAGE: "convertlab.tencentcloudcr.com/rdc/coach:airflow.base"
+        SRC_IMAGE: "ghcr.io/aquasecurity/trivy-db"
+        DST_IMAGE: "convertlab.tencentcloudcr.com/rdc/coach:trivy-db"
       run: |
         #!/usr/bin/env bash
         skopeo copy docker://$SRC_IMAGE docker://$DST_IMAGE
