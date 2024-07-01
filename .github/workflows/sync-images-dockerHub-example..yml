@@ -31,7 +31,7 @@ jobs:
         
     - name: Use Skopeo Tools Sync Image to MyRegistry
       env:
-        SRC_IMAGE: "ghcr.io/aquasecurity/trivy-db"
+        SRC_IMAGE: "ghcr.io/aquasecurity/trivy-db:2"
         DST_IMAGE: "convertlab.tencentcloudcr.com/rdc/coach:trivy-db"
       run: |
         #!/usr/bin/env bash
