@@ -1,0 +1,34 @@
+# 工作流名称
+name: Sync-TrivyDB-Images-Coach
+# 工作流运行时显示名称
+run-name: ${{ github.actor }} is Sync Images to MyRegistry.
+# 怎样触发工作流
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+# 工作流程任务（通常含有一个或多个步骤）
+jobs:
+  syncimages:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repos
+      uses: actions/checkout@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2.9.1
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2.2.0
+      with:
+        registry: "convertlab.tencentcloudcr.com"
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        logout: false
+        
+    - name: Use Skopeo Tools Sync Image to MyRegistry
+      env:
+        SRC_IMAGE: "apache/airflow:2.6.2-python3.8"
+        DST_IMAGE: "convertlab.tencentcloudcr.com/rdc/coach:airflow.base"
+      run: |
+        #!/usr/bin/env bash
+        skopeo copy docker://$SRC_IMAGE docker://$DST_IMAGE
