@@ -37,5 +37,5 @@ jobs:
       run: |
         #!/usr/bin/env bash
         skopeo copy docker://ghcr.io/aquasecurity/trivy-db:2 docker://convertlab.tencentcloudcr.com/rdc/coach:trivy-db
-        skopeo copy docker://ghcr.m.daocloud.io/aquasecurity/trivy-java-db:1 docker://convertlab.tencentcloudcr.com/rdc/coach:trivy-java-db
+        skopeo copy docker://ghcr.io/aquasecurity/trivy-java-db:1 docker://convertlab.tencentcloudcr.com/rdc/coach:trivy-java-db
  
