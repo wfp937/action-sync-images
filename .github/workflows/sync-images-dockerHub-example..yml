@@ -1,5 +1,5 @@
 # 工作流名称
-name: Sync-Images-to-MyRegistry
+name: Sync-TrivyDB-Images
 # 工作流运行时显示名称
 run-name: ${{ github.actor }} is Sync Images to MyRegistry.
 # 怎样触发工作流
@@ -35,5 +35,6 @@ jobs:
         DST_IMAGE: "convertlab.tencentcloudcr.com/rdc/coach:trivy-db"
       run: |
         #!/usr/bin/env bash
-        skopeo copy docker://$SRC_IMAGE docker://$DST_IMAGE
+        skopeo copy docker://ghcr.io/aquasecurity/trivy-db:2 docker://convertlab.tencentcloudcr.com/rdc/coach:trivy-db
+        skopeo copy docker://ghcr.m.daocloud.io/aquasecurity/trivy-java-db:1 docker://convertlab.tencentcloudcr.com/rdc/coach:trivy-java-db
  
